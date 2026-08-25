@@ -1,0 +1,186 @@
+import Link from 'next/link'
+import Icon from './Icons'
+import Picto from './pictos'
+import type { Metier, Mode, ClientRef, NewsItem } from '@/lib/content'
+
+// Cards 2 (Risques psychosociaux) and 3 (Dépistage & vaccination) use the
+// real client-supplied pictos (mental.svg / vaccin.svg) instead of the
+// generic line icon set.
+const METIER_PICTO_OVERRIDE: Partial<Record<string, 'sante-mentale' | 'vaccination'>> = {
+  'risques-psychosociaux': 'sante-mentale',
+  'depistage-vaccination': 'vaccination',
+}
+
+export function MetierCard({ m }: { m: Metier }) {
+  const isElectric = m.color === 'electric'
+  const pictoOverride = METIER_PICTO_OVERRIDE[m.slug]
+  return (
+    <Link
+      href={`/solutions/${m.slug}`}
+      className={`lift group relative flex flex-col rounded-2xl border p-7 sm:p-8 h-full overflow-hidden ${
+        isElectric ? 'bg-ink-800 border-ink-line text-white' : 'bg-white border-mist text-ink-800'
+      }`}
+    >
+      <div className={`absolute inset-0 grid-backdrop ${isElectric ? 'opacity-100' : 'grid-backdrop-light'} pointer-events-none`} />
+      <div className="relative flex items-start justify-between mb-8">
+        <span className={`font-mono-num text-xs ${isElectric ? 'text-white/40' : 'text-slate-2'}`}>{m.number}</span>
+        <div
+          className={`w-16 h-16 rounded-xl flex items-center justify-center ${
+            isElectric ? 'bg-electric/15 text-electric-light' : 'bg-electric-dim text-electric-2'
+          }`}
+        >
+          {pictoOverride ? (
+            <Picto name={pictoOverride} className="w-9 h-9" />
+          ) : (
+            <Icon name={m.icon as never} className="w-9 h-9" />
+          )}
+        </div>
+      </div>
+      <div className="relative">
+        <p className={`text-[0.7rem] font-semibold uppercase tracking-[0.14em] mb-2 ${isElectric ? 'text-electric-light' : 'text-electric-2'}`}>
+          {m.short}
+        </p>
+        <h3 className="text-xl font-semibold tracking-tight mb-3 text-balance">{m.name}</h3>
+        <p className={`text-sm leading-relaxed mb-6 ${isElectric ? 'text-white/60' : 'text-slate'}`}>{m.pitch}</p>
+      </div>
+      <div className="relative mt-auto flex items-center gap-2 text-sm font-semibold">
+        <span className={isElectric ? 'text-electric-light' : 'text-electric-2'}>Découvrir</span>
+        <Icon name="arrowRight" className={`w-4 h-4 transition-transform group-hover:translate-x-1 ${isElectric ? 'text-electric-light' : 'text-electric-2'}`} />
+      </div>
+    </Link>
+  )
+}
+
+const MODE_ICONS: Record<string, string> = {
+  'in-situ': 'building',
+  box: 'cabin',
+  mobilcare: 'van',
+  'espace-sante-en-gare': 'train',
+}
+
+export function ModeCard({ m }: { m: Mode }) {
+  return (
+    <Link
+      href={`/modes-intervention/${m.slug}`}
+      className="lift group flex flex-col rounded-2xl border border-mist bg-white p-7 h-full"
+    >
+      <div className="w-11 h-11 rounded-xl bg-electric-dim text-electric-2 flex items-center justify-center mb-6">
+        <Icon name={MODE_ICONS[m.slug] as never} className="w-5 h-5" />
+      </div>
+      <p className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-electric-2 mb-1.5">{m.short}</p>
+      <h3 className="text-lg font-semibold tracking-tight text-ink-800 mb-2.5">{m.name}</h3>
+      <p className="text-sm text-slate leading-relaxed mb-5">{m.pitch}</p>
+      {m.stat && (
+        <div className="mt-auto pt-4 border-t border-mist flex items-baseline gap-2">
+          <span className="font-mono-num text-xl font-semibold text-ink-800">{m.stat.value}</span>
+          <span className="text-xs text-slate">{m.stat.label}</span>
+        </div>
+      )}
+      <div className="mt-4 flex items-center gap-2 text-sm font-semibold text-electric-2">
+        <span>En savoir plus</span>
+        <Icon name="arrowRight" className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+      </div>
+    </Link>
+  )
+}
+
+export function ClientRefCard({ c }: { c: ClientRef }) {
+  return (
+    <div className="lift rounded-2xl border border-mist bg-white p-6 sm:p-7">
+      <div className="flex items-start justify-between mb-5">
+        <div>
+          <p className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-electric-2">{c.category}</p>
+          <h3 className="text-lg font-semibold text-ink-800 mt-1">{c.name}</h3>
+        </div>
+        <span className="text-xs text-slate-2 whitespace-nowrap">{c.since}</span>
+      </div>
+      <p className="text-sm text-slate leading-relaxed mb-6">{c.detail}</p>
+      <div className="flex items-baseline gap-2 pt-4 border-t border-mist">
+        <span className="font-mono-num text-2xl font-semibold text-ink-800">{c.metric.value}</span>
+        <span className="text-xs text-slate">{c.metric.label}</span>
+      </div>
+    </div>
+  )
+}
+
+const NEWS_TYPE_LABEL: Record<NewsItem['type'], string> = {
+  article: 'Article',
+  presse: 'Dans les médias',
+  reseaux: 'Réseaux sociaux',
+  'livre-blanc': 'Livre blanc',
+}
+
+export function NewsTypeBadge({ type }: { type: NewsItem['type'] }) {
+  const styles: Record<NewsItem['type'], string> = {
+    article: 'bg-electric-dim text-electric-2',
+    presse: 'bg-ink-800 text-white',
+    reseaux: 'bg-mist text-slate',
+    'livre-blanc': 'bg-signal/10 text-signal',
+  }
+  return (
+    <span className={`inline-flex items-center gap-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.1em] px-2.5 py-1 rounded-full ${styles[type]}`}>
+      {type === 'livre-blanc' && <Icon name="download" className="w-3 h-3" />}
+      {NEWS_TYPE_LABEL[type]}
+    </span>
+  )
+}
+
+export function NewsCard({ n }: { n: NewsItem }) {
+  return (
+    <Link href={`/actualites/${n.slug}`} className="lift group flex flex-col rounded-2xl border border-mist bg-white overflow-hidden h-full">
+      <div className="aspect-[16/10] bg-paper-2 flex items-center justify-center relative overflow-hidden">
+        <div className="absolute inset-0 grid-backdrop-light opacity-60" />
+        <Icon
+          name={n.type === 'livre-blanc' ? 'file' : n.type === 'presse' ? 'report' : n.type === 'reseaux' ? 'chat' : 'spark'}
+          className="w-9 h-9 text-electric-2/50 relative"
+        />
+      </div>
+      <div className="p-5 sm:p-6 flex flex-col flex-1">
+        <div className="flex items-center gap-2 mb-3">
+          <NewsTypeBadge type={n.type} />
+          <span className="text-xs text-slate-2">{n.date}</span>
+        </div>
+        <h3 className="text-[1.02rem] font-semibold text-ink-800 leading-snug mb-2 group-hover:text-electric-2 transition-colors">
+          {n.title}
+        </h3>
+        <p className="text-sm text-slate leading-relaxed line-clamp-3">{n.excerpt}</p>
+        {n.outlet && <p className="mt-3 text-xs text-slate-2 italic">{n.outlet}</p>}
+      </div>
+    </Link>
+  )
+}
+
+export function PersonCard({ name, role, detail }: { name: string; role: string; detail?: string }) {
+  const initials = name
+    .replace(/^(Dr|Pr)\.?\s/, '')
+    .split(' ')
+    .map((p) => p[0])
+    .slice(0, 2)
+    .join('')
+
+  return (
+    <div className="rounded-2xl border border-mist bg-white p-6">
+      <div className="w-12 h-12 rounded-full bg-ink-800 text-white flex items-center justify-center font-semibold text-sm mb-4">
+        {initials}
+      </div>
+      <h3 className="text-[0.98rem] font-semibold text-ink-800 leading-snug">{name}</h3>
+      <p className="text-sm text-electric-2 font-medium mt-1">{role}</p>
+      {detail && <p className="text-sm text-slate leading-relaxed mt-2.5">{detail}</p>}
+    </div>
+  )
+}
+
+export function ClientLogoStrip({ names }: { names: string[] }) {
+  const loop = [...names, ...names]
+  return (
+    <div className="relative overflow-hidden py-2 [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+      <div className="flex gap-10 sm:gap-14 w-max animate-marquee">
+        {loop.map((n, i) => (
+          <span key={`${n}-${i}`} className="text-[1.05rem] font-semibold tracking-tight text-ink-800/35 whitespace-nowrap shrink-0">
+            {n}
+          </span>
+        ))}
+      </div>
+    </div>
+  )
+}
