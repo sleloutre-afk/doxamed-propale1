@@ -3,7 +3,6 @@ import { Section, Kicker, CTABanner } from '@/components/ui'
 import { MetierCard, ModeCard, ClientRefCard, NewsCard, ClientLogoStrip } from '@/components/Cards'
 import ContactCTAButton from '@/components/ContactCTAButton'
 import BodyMap from '@/components/BodyMap'
-import PatientJourney from '@/components/PatientJourney'
 import Icon from '@/components/Icons'
 import LogoShape from '@/components/brand/LogoShape'
 import {
@@ -15,6 +14,7 @@ import {
   NEWS,
   ARNAUD,
   ADP_QUOTE,
+  TELEDOK,
 } from '@/lib/content'
 
 export default function Home() {
@@ -66,7 +66,7 @@ export default function Home() {
                   href="/solutions"
                   className="px-6 py-3.5 rounded-full border border-white/20 text-sm font-semibold text-white/85 hover:border-white/40 hover:text-white transition-colors"
                 >
-                  Découvrir nos 4 métiers
+                  Découvrir nos 4 solutions
                 </Link>
               </div>
             </div>
@@ -116,7 +116,7 @@ export default function Home() {
             <div>
               <Kicker dark>Offre 360° santé</Kicker>
               <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-white mb-5 text-balance">
-                Réinventer la santé de demain, partout et pour tous.
+                Réinventer la prévention santé, à 360°.
               </h2>
               <p className="text-white/60 leading-relaxed mb-8 max-w-md">
                 Prévention, dépistage, santé mentale, vaccination : une couverture médicale complète,
@@ -136,13 +136,92 @@ export default function Home() {
         </Section>
       </section>
 
-      {/* PARCOURS PATIENT */}
+      {/* TECHNOLOGIE & HUMAIN */}
       <Section className="py-20 sm:py-28">
-        <Kicker>Notre promesse</Kicker>
-        <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 mb-10 max-w-2xl text-balance">
-          Un parcours clé en main, du questionnaire au plan de prévention individuel.
-        </h2>
-        <PatientJourney />
+        <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-14 items-center">
+          <div>
+            <Kicker>Notre approche</Kicker>
+            <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 mb-6 max-w-lg text-balance">
+              La technologie comme une évidence. L&rsquo;humain comme une exigence.
+            </h2>
+            <p className="text-slate leading-relaxed mb-9 max-w-lg">
+              Doxamed s&rsquo;appuie sur les meilleures innovations médicales — sans jamais renoncer
+              au lien humain qui fait la qualité d&rsquo;une prise en charge.
+            </p>
+            <div className="space-y-6">
+              <div className="flex gap-4">
+                <div className="w-11 h-11 rounded-xl bg-electric-dim text-electric-2 flex items-center justify-center shrink-0">
+                  <Icon name="chat" className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-ink-800 mb-1">Téléconsultation avec les meilleurs médecins</h3>
+                  <p className="text-sm text-slate leading-relaxed">
+                    Généralistes et spécialistes accessibles à distance grâce à TeleDok, la plateforme
+                    nationale de médecins aguerris — plus de 100 professionnels engagés.
+                  </p>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <div className="w-11 h-11 rounded-xl bg-electric-dim text-electric-2 flex items-center justify-center shrink-0">
+                  <Icon name="nurse" className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-ink-800 mb-1">Une infirmière toujours à vos côtés</h3>
+                  <p className="text-sm text-slate leading-relaxed">
+                    Chaque téléconsultation est systématiquement accompagnée sur site par une infirmière
+                    diplômée d&rsquo;État, garante du lien humain avec le patient.
+                  </p>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <div className="w-11 h-11 rounded-xl bg-electric-dim text-electric-2 flex items-center justify-center shrink-0">
+                  <Icon name="spark" className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-ink-800 mb-1">Support IA &amp; data analytics</h3>
+                  <p className="text-sm text-slate leading-relaxed">
+                    Nos outils d&rsquo;intelligence artificielle et d&rsquo;analyse de données affinent
+                    le diagnostic et objectivent le suivi médical — au service du regard humain, jamais à sa place.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-8 rounded-2xl border border-mist bg-white p-6 sm:p-7">
+              <div className="flex items-center gap-5 mb-5">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/brand/teledok.svg" alt="TeleDok" className="h-9 w-auto shrink-0 opacity-40" />
+                <p className="text-sm text-slate leading-relaxed">
+                  Précurseur des plateformes de médecins dédiées à la téléconsultation, et partenaire de
+                  référence de Doxamed, Teledok met à disposition ses praticiens — généralistes et
+                  spécialistes — auprès des opérateurs de télémédecine.
+                </p>
+              </div>
+              <div className="flex flex-wrap items-center gap-x-8 gap-y-3 mb-5">
+                <div>
+                  <p className="font-mono-num text-lg font-semibold text-ink-800">{TELEDOK.founded}</p>
+                  <p className="text-xs text-slate-2">Fondé par {TELEDOK.founders}</p>
+                </div>
+                <div>
+                  <p className="font-mono-num text-lg font-semibold text-ink-800">{TELEDOK.stat.value}</p>
+                  <p className="text-xs text-slate-2">{TELEDOK.stat.label}</p>
+                </div>
+              </div>
+              <Link
+                href="/a-propos/savoir-faire#teledok"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-electric-2"
+              >
+                En savoir plus <Icon name="arrowRight" className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/photos/team.png"
+            alt="Une équipe Doxamed : professionnels de santé et technologie au service du patient"
+            className="w-full aspect-[4/5] rounded-2xl object-cover"
+          />
+        </div>
       </Section>
 
       {/* MODES D'INTERVENTION */}

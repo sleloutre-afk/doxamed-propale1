@@ -7,7 +7,7 @@ import { METIERS, CONSEIL_INGENIERIE } from '@/lib/content'
 
 export const metadata: Metadata = {
   title: 'Nos solutions de santé',
-  description: "Bilan de prévention santé, risques psychosociaux, dépistage & vaccination, accès aux soins : les quatre métiers complémentaires de Doxamed.",
+  description: "Bilan de prévention santé, risques psychosociaux, dépistage & vaccination, accès aux soins : les quatre solutions complémentaires de Doxamed.",
 }
 
 export default function SolutionsPage() {
@@ -15,7 +15,7 @@ export default function SolutionsPage() {
     <>
       <PageHero
         kicker="Nos solutions de santé"
-        title="Quatre métiers complémentaires pour une santé à 360°."
+        title="Quatre solutions complémentaires, un seul objectif : la santé pour tous, partout."
         lead="De la prévention à l'accès aux soins, Doxamed conçoit des dispositifs médicaux exigeants, pilotés par des professionnels de santé et déployés au plus près de vos équipes."
         crumb={[{ label: 'Nos solutions', href: '/solutions' }]}
       />

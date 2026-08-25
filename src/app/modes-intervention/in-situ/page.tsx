@@ -18,6 +18,8 @@ export default function InSituPage() {
         title="In situ : un espace santé installé dans vos locaux."
         lead="Le dispositif le plus déployé par Doxamed. Une salle mise à disposition par l'entreprise devient, le temps d'une campagne, un véritable cabinet de prévention."
         crumb={[{ label: "Nos modes d'intervention", href: '/modes-intervention' }, { label: 'In situ', href: '/modes-intervention/in-situ' }]}
+        image="/photos/in-situ.png"
+        imagePosition="center top"
       />
 
       <Section className="py-20 sm:py-28">

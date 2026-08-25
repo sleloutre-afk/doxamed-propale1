@@ -21,7 +21,7 @@ export default function SavoirFairePage() {
       />
 
       {/* Teledok */}
-      <Section className="py-20 sm:py-28">
+      <Section id="teledok" className="py-20 sm:py-28 scroll-mt-28">
         <div className="rounded-3xl border border-mist bg-white p-8 sm:p-14">
           <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-12 items-start">
             <div>

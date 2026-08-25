@@ -22,6 +22,7 @@ export function PageHero({
   lead,
   crumb,
   image,
+  imagePosition = 'center',
 }: {
   kicker: string
   title: string
@@ -29,13 +30,20 @@ export function PageHero({
   crumb?: { label: string; href: string }[]
   /** Optional background photo (e.g. "/photos/mobilcar.png") behind the hero. */
   image?: string
+  /** CSS object-position for the background photo (default "center"). */
+  imagePosition?: string
 }) {
   return (
     <section className="relative bg-ink-800 text-white overflow-hidden">
       {image && (
         <>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={image} alt="" className="absolute inset-0 w-full h-full object-cover" />
+          <img
+            src={image}
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ objectPosition: imagePosition }}
+          />
           <div
             className="absolute inset-0"
             style={{

@@ -18,6 +18,7 @@ export default function GarePage() {
         title="Espace de santé en gare : soigner au cœur des déserts médicaux."
         lead="Fin 2023, Doxamed remporte l'appel d'offres de SNCF Gares & Connexions pour déployer des espaces de santé permanents en gare."
         crumb={[{ label: "Nos modes d'intervention", href: '/modes-intervention' }, { label: 'Espace de santé en gare', href: '/modes-intervention/espace-sante-en-gare' }]}
+        image="/photos/gare.png"
       />
 
       <Section className="py-16 sm:py-20 -mt-8 sm:-mt-14 relative">
