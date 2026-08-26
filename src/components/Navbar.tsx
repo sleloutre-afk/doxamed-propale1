@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import Logo from './Logo'
 import { NAV } from '@/lib/nav'
@@ -10,6 +10,8 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [openMenu, setOpenMenu] = useState<string | null>(null)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(false)
+  const searchRef = useRef<HTMLDivElement>(null)
   const pathname = usePathname()
 
   useEffect(() => {
@@ -22,11 +24,30 @@ export default function Navbar() {
   useEffect(() => {
     setMobileOpen(false)
     setOpenMenu(null)
+    setSearchOpen(false)
   }, [pathname])
+
+  useEffect(() => {
+    if (!searchOpen) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSearchOpen(false)
+    }
+    const onClick = (e: MouseEvent) => {
+      if (searchRef.current && !searchRef.current.contains(e.target as Node)) setSearchOpen(false)
+    }
+    window.addEventListener('keydown', onKey)
+    document.addEventListener('mousedown', onClick)
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      document.removeEventListener('mousedown', onClick)
+    }
+  }, [searchOpen])
 
   // Every page opens on a dark (bg-ink-800) hero, so an unscrolled header can
   // safely go transparent with light text; it only needs to become opaque
-  // once scrolled past the hero, or while the mobile menu is open.
+  // once scrolled past the hero, or while the mobile menu is open. The
+  // search dropdown floats over it like the nav mega-menus do, so it
+  // doesn't need to force the header solid.
   const solid = scrolled || mobileOpen
 
   return (
@@ -79,6 +100,59 @@ export default function Navbar() {
               )}
             </div>
           ))}
+
+          {/* Language switch and search — visual only for now, pending client
+              validation of this design direction before wiring EN pages /
+              real search. */}
+          <div className={`flex items-center gap-3 ml-2 pl-3 border-l ${solid ? 'border-mist' : 'border-white/20'}`}>
+            <div className="flex items-center gap-1 text-[0.8rem] font-medium select-none">
+              <span className={solid ? 'text-ink-800' : 'text-white'}>FR</span>
+              <span className={solid ? 'text-slate-2' : 'text-white/30'}>/</span>
+              <span className={solid ? 'text-slate-2' : 'text-white/50'}>EN</span>
+            </div>
+            <div className="relative" ref={searchRef}>
+              <button
+                type="button"
+                aria-label={searchOpen ? 'Fermer la recherche' : 'Rechercher'}
+                onClick={() => setSearchOpen((v) => !v)}
+                className={`w-8 h-8 flex items-center justify-center rounded-full transition-colors ${
+                  searchOpen
+                    ? 'text-electric-2 bg-electric-dim'
+                    : solid
+                      ? 'text-slate hover:text-ink-800 hover:bg-paper-2'
+                      : 'text-white/70 hover:text-white hover:bg-white/10'
+                }`}
+              >
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="1.8" />
+                  <path d="M21 21L16.5 16.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                </svg>
+              </button>
+
+              {searchOpen && (
+                <div className="absolute top-full right-0 pt-3 w-[380px]">
+                  <div
+                    className="rounded-2xl bg-white border border-mist shadow-xl shadow-ink-800/5 p-2 animate-fade-up"
+                    style={{ animationDuration: '0.18s' }}
+                  >
+                    <div className="flex items-center gap-2.5 rounded-xl bg-paper-2 px-3.5 py-2.5">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-slate-2 shrink-0" aria-hidden="true">
+                        <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="1.8" />
+                        <path d="M21 21L16.5 16.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                      </svg>
+                      {/* eslint-disable-next-line jsx-a11y/no-autofocus */}
+                      <input
+                        type="text"
+                        autoFocus
+                        placeholder="Rechercher…"
+                        className="flex-1 bg-transparent outline-none text-sm text-ink-800 placeholder:text-slate-2"
+                      />
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
 
         <button
