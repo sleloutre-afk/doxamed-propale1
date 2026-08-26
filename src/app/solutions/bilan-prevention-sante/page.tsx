@@ -6,11 +6,12 @@ import BodyMap from '@/components/BodyMap'
 import PatientJourney from '@/components/PatientJourney'
 import { ClientRefCard } from '@/components/Cards'
 import Icon from '@/components/Icons'
+import Picto from '@/components/pictos'
 import { CLIENT_REFS, BPS_EXAMS } from '@/lib/content'
 
 export const metadata: Metadata = {
   title: 'Bilan de prévention santé (BPS)',
-  description: "Un checkup 360° pour vos collaborateurs : 8 fonctions vitales explorées en 2h30, sur site, avec suivi médical à distance.",
+  description: "Un dispositif pensé pour les entreprises, avec un vrai bénéfice pour chaque salarié : 8 fonctions vitales explorées en 2h30, sur site, avec suivi médical à distance.",
 }
 
 // The BPS parcours itself covers 8 functions — vaccination and santé mentale
@@ -21,9 +22,9 @@ const BPS_ONLY_EXAMS = BPS_EXAMS.filter((e) => e.key !== 'vaccination' && e.key 
 const PROMISE = [
   { icon: 'calendar', label: 'Sur rendez-vous' },
   { icon: 'building', label: '100% dans vos locaux, clé en main' },
-  { icon: 'users', label: "Chef d'opération dédié" },
-  { icon: 'nurse', label: 'IDE présente tout au long du bilan' },
-  { icon: 'doctor', label: 'Médecin à distance' },
+  { picto: 'operateur', label: "Chef d'opération dédié" },
+  { picto: 'infirmiere', label: 'IDE présente tout au long du bilan' },
+  { picto: 'teleconsultation', label: 'Médecin à distance' },
   { icon: 'report', label: 'Rapport complet et recommandations' },
 ] as const
 
@@ -35,7 +36,7 @@ export default function BPSPage() {
       <PageHero
         kicker="Solution n°1 — BPS"
         title={<>Le bilan de prévention santé : <span className="text-electric-light">un checkup 360° en 2h30.</span></>}
-        lead="Un dispositif déployable à grande échelle, conforme aux exigences médicales, qui explore 8 fonctions vitales pour chaque collaborateur — sur site, sans rupture d'activité."
+        lead="Un dispositif pensé pour les entreprises — et un vrai bénéfice pour chaque salarié : 8 fonctions vitales explorées sur site, en 2h30, sans rupture d'activité."
         crumb={[{ label: 'Nos solutions', href: '/solutions' }, { label: 'Bilan de prévention santé', href: '/solutions/bilan-prevention-sante' }]}
         video="/videos/bps.mp4"
       />
@@ -56,7 +57,11 @@ export default function BPSPage() {
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
           {PROMISE.map((p) => (
             <div key={p.label} className="flex flex-col items-center text-center gap-3 rounded-xl border border-mist bg-white p-4">
-              <Icon name={p.icon} className="w-5 h-5 text-electric-2" />
+              {'picto' in p ? (
+                <Picto name={p.picto} className="w-5 h-5 text-electric-2" />
+              ) : (
+                <Icon name={p.icon} className="w-5 h-5 text-electric-2" />
+              )}
               <span className="text-[0.75rem] text-slate leading-snug">{p.label}</span>
             </div>
           ))}
@@ -78,9 +83,14 @@ export default function BPSPage() {
       {/* Patient journey */}
       <Section className="py-20 sm:py-28">
         <Kicker>Parcours patient</Kicker>
-        <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 mb-10 max-w-2xl text-balance">
+        <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 mb-4 max-w-2xl text-balance">
           Avant, sur site, à distance, après : un parcours entièrement piloté par Doxamed.
         </h2>
+        <p className="text-slate max-w-2xl mb-10 leading-relaxed">
+          Déployé à l&rsquo;initiative de l&rsquo;entreprise, ce parcours représente un vrai bénéfice pour chaque
+          salarié : un temps dédié à sa santé, pris en charge de bout en bout, sans avance de frais ni contrainte
+          d&rsquo;organisation.
+        </p>
         <PatientJourney />
         <div className="mt-10">
           <ContactCTAButton label="Déployer un BPS dans mon entreprise" need="Bilan de prévention santé (BPS)" />

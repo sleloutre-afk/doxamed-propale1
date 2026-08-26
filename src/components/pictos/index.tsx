@@ -16,10 +16,15 @@ import PictoMedias from './PictoMedias'
 import PictoSocial from './PictoSocial'
 import PictoWhitepaper from './PictoWhitepaper'
 import PictoArticles from './PictoArticles'
+import PictoInfirmiere from './PictoInfirmiere'
+import PictoOperateur from './PictoOperateur'
+import PictoTeleconsultation from './PictoTeleconsultation'
+import PictoIA from './PictoIA'
 
 /** Registry keyed by the same `key` used in BPS_EXAMS (src/lib/content.ts),
- *  the four modes d'intervention slugs, and the four actualités/media types
- *  (src/lib/content.ts NewsItem['type']). */
+ *  the four modes d'intervention slugs, the four actualités/media types
+ *  (src/lib/content.ts NewsItem['type']), and the dispositif humain roles
+ *  (infirmière, opérateur, téléconsultation, IA). */
 export const PICTOS = {
   'sante-mentale': PictoSanteMentale,
   visuel: PictoVisuel,
@@ -39,6 +44,10 @@ export const PICTOS = {
   social: PictoSocial,
   whitepaper: PictoWhitepaper,
   articles: PictoArticles,
+  infirmiere: PictoInfirmiere,
+  operateur: PictoOperateur,
+  teleconsultation: PictoTeleconsultation,
+  ia: PictoIA,
 } as const
 
 export type PictoKey = keyof typeof PICTOS

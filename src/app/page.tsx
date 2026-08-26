@@ -4,12 +4,14 @@ import { MetierCard, ModeCard, ClientRefCard, NewsCard, ClientLogoStrip } from '
 import ContactCTAButton from '@/components/ContactCTAButton'
 import BodyMap from '@/components/BodyMap'
 import Icon from '@/components/Icons'
+import Picto from '@/components/pictos'
 import LogoShape from '@/components/brand/LogoShape'
 import {
   METIERS,
   MODES,
   GLOBAL_STATS,
   CLIENT_LOGOS,
+  CLIENT_LOGO_IMAGES,
   CLIENT_REFS,
   NEWS,
   ARNAUD,
@@ -66,7 +68,7 @@ export default function Home() {
                   href="/solutions"
                   className="px-6 py-3.5 rounded-full border border-white/20 text-sm font-semibold text-white/85 hover:border-white/40 hover:text-white transition-colors"
                 >
-                  Découvrir nos 4 solutions
+                  Découvrir nos solutions
                 </Link>
               </div>
             </div>
@@ -94,7 +96,7 @@ export default function Home() {
           <div>
             <Kicker>Nos solutions de santé</Kicker>
             <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 max-w-xl text-balance">
-              Quatre solutions complémentaires, un seul objectif : la santé pour tous, partout.
+              Des solutions complémentaires, un seul objectif : la santé pour tous, partout.
             </h2>
           </div>
           <Link href="/solutions" className="text-sm font-semibold text-electric-2 hover:text-electric-2/80 shrink-0 flex items-center gap-1.5">
@@ -151,7 +153,7 @@ export default function Home() {
             <div className="space-y-6">
               <div className="flex gap-4">
                 <div className="w-11 h-11 rounded-xl bg-electric-dim text-electric-2 flex items-center justify-center shrink-0">
-                  <Icon name="chat" className="w-5 h-5" />
+                  <Picto name="teleconsultation" className="w-5 h-5" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-ink-800 mb-1">Téléconsultation avec les meilleurs médecins</h3>
@@ -163,7 +165,7 @@ export default function Home() {
               </div>
               <div className="flex gap-4">
                 <div className="w-11 h-11 rounded-xl bg-electric-dim text-electric-2 flex items-center justify-center shrink-0">
-                  <Icon name="nurse" className="w-5 h-5" />
+                  <Picto name="infirmiere" className="w-5 h-5" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-ink-800 mb-1">Une infirmière toujours à vos côtés</h3>
@@ -175,7 +177,7 @@ export default function Home() {
               </div>
               <div className="flex gap-4">
                 <div className="w-11 h-11 rounded-xl bg-electric-dim text-electric-2 flex items-center justify-center shrink-0">
-                  <Icon name="spark" className="w-5 h-5" />
+                  <Picto name="ia" className="w-5 h-5" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-ink-800 mb-1">Support IA &amp; data analytics</h3>
@@ -197,7 +199,7 @@ export default function Home() {
                   spécialistes — auprès des opérateurs de télémédecine.
                 </p>
               </div>
-              <div className="flex flex-wrap items-center gap-x-8 gap-y-3 mb-5">
+              <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
                 <div>
                   <p className="font-mono-num text-lg font-semibold text-ink-800">{TELEDOK.founded}</p>
                   <p className="text-xs text-slate-2">Fondé par {TELEDOK.founders}</p>
@@ -207,12 +209,6 @@ export default function Home() {
                   <p className="text-xs text-slate-2">{TELEDOK.stat.label}</p>
                 </div>
               </div>
-              <Link
-                href="/a-propos/savoir-faire#teledok"
-                className="inline-flex items-center gap-1.5 text-sm font-semibold text-electric-2"
-              >
-                En savoir plus <Icon name="arrowRight" className="w-4 h-4" />
-              </Link>
             </div>
           </div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -267,7 +263,7 @@ export default function Home() {
             <svg width="34" height="26" viewBox="0 0 34 26" fill="none" className="text-electric-dim mb-4">
               <path d="M0 26V15.6C0 6.8 5.4 1 14.4 0L15.8 3.6C10 5 7 8.4 7 13H14.4V26H0ZM19.2 26V15.6C19.2 6.8 24.6 1 33.6 0L35 3.6C29.2 5 26.2 8.4 26.2 13H33.6V26H19.2Z" fill="#00a9e0" />
             </svg>
-            <p className="text-xl sm:text-2xl font-medium text-ink-800 leading-snug text-balance">
+            <p className="text-xl sm:text-2xl font-medium italic text-ink-800 leading-snug text-balance">
               {ARNAUD.quote}
             </p>
           </div>
@@ -277,13 +273,20 @@ export default function Home() {
       {/* REFERENCES */}
       <section className="bg-paper-2 py-20 sm:py-28">
         <Section>
-          <Kicker>Ils nous font confiance</Kicker>
-          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 mb-10 max-w-2xl text-balance">
-            Des grands groupes et des institutions engagés à nos côtés.
-          </h2>
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-10">
+            <div>
+              <Kicker>Ils nous font confiance</Kicker>
+              <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 max-w-2xl text-balance">
+                Des grands groupes et des institutions engagés à nos côtés.
+              </h2>
+            </div>
+            <Link href="/references" className="text-sm font-semibold text-electric-2 flex items-center gap-1.5 shrink-0">
+              Voir toutes nos références <Icon name="arrowRight" className="w-4 h-4" />
+            </Link>
+          </div>
 
           <div className="mb-12">
-            <ClientLogoStrip names={CLIENT_LOGOS} />
+            <ClientLogoStrip names={CLIENT_LOGOS} logos={CLIENT_LOGO_IMAGES} />
           </div>
 
           <div className="grid sm:grid-cols-3 gap-5 mb-10">
@@ -293,21 +296,23 @@ export default function Home() {
           </div>
 
           <div className="border-t border-mist pt-8">
-            <blockquote className="max-w-2xl">
-              <p className="text-lg sm:text-xl font-medium text-ink-800 leading-snug text-balance">
-                &ldquo;{ADP_QUOTE.quote}&rdquo;
-              </p>
-              <footer className="mt-3 text-sm text-slate">
-                <span className="font-semibold text-ink-800">{ADP_QUOTE.author}</span>, {ADP_QUOTE.role} —{' '}
-                <span className="text-slate-2">{ADP_QUOTE.source}</span>
-              </footer>
+            <blockquote className="max-w-3xl mx-auto flex items-start gap-5">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/photos/romanet.png"
+                alt={ADP_QUOTE.author}
+                className="w-16 h-16 rounded-full object-cover shrink-0"
+              />
+              <div>
+                <p className="text-lg sm:text-xl font-medium italic text-electric-2 leading-snug text-balance">
+                  &ldquo;{ADP_QUOTE.quote}&rdquo;
+                </p>
+                <footer className="mt-3 text-sm text-slate">
+                  <span className="font-semibold text-ink-800">{ADP_QUOTE.author}</span>, {ADP_QUOTE.role} —{' '}
+                  <span className="text-slate-2">{ADP_QUOTE.source}</span>
+                </footer>
+              </div>
             </blockquote>
-          </div>
-
-          <div className="mt-10">
-            <Link href="/references" className="text-sm font-semibold text-electric-2 flex items-center gap-1.5">
-              Voir toutes nos références <Icon name="arrowRight" className="w-4 h-4" />
-            </Link>
           </div>
         </Section>
       </section>

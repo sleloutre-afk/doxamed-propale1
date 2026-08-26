@@ -10,7 +10,7 @@ const STATIC_ROUTES = [
   '/modes-intervention',
   '/a-propos',
   '/a-propos/gouvernance',
-  '/a-propos/savoir-faire',
+  '/a-propos/labels-prix',
   '/references',
   '/actualites',
   '/carrieres',

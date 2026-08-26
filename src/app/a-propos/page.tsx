@@ -65,8 +65,8 @@ export default function AProposPage() {
           <Link href="/a-propos/gouvernance" className="inline-flex items-center gap-1.5 text-sm font-semibold text-electric-2">
             Notre gouvernance <Icon name="arrowRight" className="w-4 h-4" />
           </Link>
-          <Link href="/a-propos/savoir-faire" className="inline-flex items-center gap-1.5 text-sm font-semibold text-electric-2">
-            Notre savoir-faire <Icon name="arrowRight" className="w-4 h-4" />
+          <Link href="/a-propos/labels-prix" className="inline-flex items-center gap-1.5 text-sm font-semibold text-electric-2">
+            Nos labels & prix <Icon name="arrowRight" className="w-4 h-4" />
           </Link>
         </div>
       </Section>

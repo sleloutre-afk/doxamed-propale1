@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { PageHero, Section, Kicker, CTABanner } from '@/components/ui'
 import { ClientRefCard } from '@/components/Cards'
 import Icon from '@/components/Icons'
-import { GLOBAL_STATS, CLIENT_REFS, CLIENT_LOGOS, AWARDS, ADP_QUOTE } from '@/lib/content'
+import { GLOBAL_STATS, CLIENT_REFS, CLIENT_LOGOS, CLIENT_LOGO_IMAGES, ADP_QUOTE } from '@/lib/content'
 
 export const metadata: Metadata = {
   title: 'Références',
@@ -55,36 +56,38 @@ export default function ReferencesPage() {
         </Section>
       </section>
 
-      <Section className="py-20 sm:py-24">
-        <Kicker>Prix & distinctions</Kicker>
-        <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 mb-10 max-w-2xl text-balance">
-          Des projets récompensés pour leur caractère innovant.
-        </h2>
-        <div className="grid sm:grid-cols-2 gap-4">
-          {AWARDS.map((a) => (
-            <div key={a.name} className="rounded-xl border border-mist bg-white p-6 flex gap-4">
-              <div className="w-10 h-10 rounded-lg bg-electric-dim text-electric-2 flex items-center justify-center shrink-0">
-                <Icon name="shield" className="w-5 h-5" />
-              </div>
-              <div>
-                <p className="font-semibold text-ink-800 text-sm">{a.name}</p>
-                <p className="text-xs text-slate-2 mt-1">{a.org} — {a.year}</p>
-                <p className="text-xs text-slate mt-1.5">{a.project}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+      <Section className="py-20 sm:py-24 text-center">
+        <p className="text-slate">
+          Nos projets sont régulièrement récompensés pour leur caractère innovant.
+        </p>
+        <Link
+          href="/a-propos/labels-prix"
+          className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-electric-2"
+        >
+          Voir nos labels & prix <Icon name="arrowRight" className="w-4 h-4" />
+        </Link>
       </Section>
 
       <section className="bg-paper-2 py-20 sm:py-24">
         <Section>
           <Kicker>Ils nous font confiance</Kicker>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-8">
-            {CLIENT_LOGOS.map((n) => (
-              <div key={n} className="rounded-xl border border-mist bg-white p-5 flex items-center justify-center text-center">
-                <span className="text-sm font-semibold text-ink-800/70">{n}</span>
-              </div>
-            ))}
+            {CLIENT_LOGOS.map((n) =>
+              CLIENT_LOGO_IMAGES[n] ? (
+                <div key={n} className="rounded-xl border border-mist bg-white p-5 flex items-center justify-center h-24">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={CLIENT_LOGO_IMAGES[n]}
+                    alt={n}
+                    className="h-9 w-auto max-w-[75%] object-contain grayscale"
+                  />
+                </div>
+              ) : (
+                <div key={n} className="rounded-xl border border-mist bg-white p-5 flex items-center justify-center text-center h-24">
+                  <span className="text-sm font-semibold text-ink-800/70">{n}</span>
+                </div>
+              )
+            )}
           </div>
         </Section>
       </section>

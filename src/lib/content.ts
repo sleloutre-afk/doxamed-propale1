@@ -192,6 +192,8 @@ export type ClientRef = {
   since: string
   detail: string
   metric: { value: string; label: string }
+  /** Optional real logo (e.g. "/brand/references/adp.png") — falls back to the company name as text. */
+  logo?: string
 }
 
 export const CLIENT_REFS: ClientRef[] = [
@@ -201,6 +203,7 @@ export const CLIENT_REFS: ClientRef[] = [
     since: 'Depuis 2025',
     detail: 'Contrat de 6 ans — centres de bilan de prévention santé à Charles de Gaulle et Orly.',
     metric: { value: '1 008', label: 'personnes / an' },
+    logo: '/brand/references/adp.png',
   },
   {
     name: 'bpifrance',
@@ -208,6 +211,7 @@ export const CLIENT_REFS: ClientRef[] = [
     since: 'Depuis janvier 2026',
     detail: "Contrat de 5 ans. 1ère ouverture : 528 inscrits en 40 minutes, 100% des créneaux réservés.",
     metric: { value: '~850', label: 'personnes / an' },
+    logo: '/brand/references/bpifrance.png',
   },
   {
     name: 'Deloitte',
@@ -215,6 +219,7 @@ export const CLIENT_REFS: ClientRef[] = [
     since: 'Fin janvier 2026',
     detail: "Contrat de 3 ans. 1ère ouverture : 80% de réservation en 3 heures.",
     metric: { value: '300', label: 'personnes / an' },
+    logo: '/brand/references/deloitte.png',
   },
   {
     name: 'Air France',
@@ -222,6 +227,7 @@ export const CLIENT_REFS: ClientRef[] = [
     since: 'Depuis 2021',
     detail: 'Dispositif ORL tech pour le personnel navigant.',
     metric: { value: '+865', label: 'consultations' },
+    logo: '/brand/clients/airfrance.png',
   },
   {
     name: 'Estée Lauder',
@@ -229,6 +235,7 @@ export const CLIENT_REFS: ClientRef[] = [
     since: 'Novembre 2025',
     detail: 'Campagne de vaccination sur site.',
     metric: { value: '100', label: 'vaccins' },
+    logo: '/brand/clients/esteelauder.png',
   },
   {
     name: 'Doctolib',
@@ -236,6 +243,7 @@ export const CLIENT_REFS: ClientRef[] = [
     since: 'Décembre 2025',
     detail: 'Campagne de vaccination grippe / Covid.',
     metric: { value: '600', label: 'vaccins' },
+    logo: '/brand/clients/doctolib.svg',
   },
   {
     name: 'Euronext',
@@ -243,6 +251,7 @@ export const CLIENT_REFS: ClientRef[] = [
     since: 'Décembre 2025',
     detail: 'Conférence de sensibilisation aux addictions.',
     metric: { value: '100', label: 'personnes' },
+    logo: '/brand/clients/euronext.png',
   },
 ]
 
@@ -252,6 +261,34 @@ export const CLIENT_LOGOS = [
   'Euronext', 'Keyrus', 'wifirst', 'Doctolib', 'Disneyland Paris', 'Estée Lauder',
   'SNCF Gares & Connexions', 'Futuroscope', 'Olympique Lyonnais', 'Eurofins', 'ANR', 'Colisée',
 ]
+
+/** Real logo files for a subset of CLIENT_LOGOS — the rest fall back to text. */
+export const CLIENT_LOGO_IMAGES: Partial<Record<string, string>> = {
+  'Groupe ADP': '/brand/clients/adp.png',
+  bpifrance: '/brand/clients/bpifrance.png',
+  Deloitte: '/brand/clients/deloitte.svg',
+  'Air France': '/brand/clients/airfrance.png',
+  Renault: '/brand/clients/renault.png',
+  'Dassault Systèmes': '/brand/clients/dassault.png',
+  'Accor Arena': '/brand/clients/AccorArena.png',
+  Bouygues: '/brand/clients/bouygues.png',
+  Orange: '/brand/clients/orange.svg.webp',
+  AXA: '/brand/clients/axa.png',
+  Thales: '/brand/clients/thales.png',
+  Euronext: '/brand/clients/euronext.png',
+  Keyrus: '/brand/clients/keyrus.png',
+  'Disneyland Paris': '/brand/clients/disneyland.png',
+  'Estée Lauder': '/brand/clients/esteelauder.png',
+  'SNCF Gares & Connexions': '/brand/clients/sncf.png',
+  'Eiffage Construction': '/brand/clients/eiffage.png',
+  Doctolib: '/brand/clients/doctolib.svg',
+  Futuroscope: '/brand/clients/futuroscope.png',
+  'Olympique Lyonnais': '/brand/clients/olympique-lyonnais.svg',
+  ANR: '/brand/clients/anr.svg.webp',
+  Eurofins: '/brand/clients/eurofins.png',
+  wifirst: '/brand/clients/wifirst.png',
+  Colisée: '/brand/clients/colisee.png',
+}
 
 export const GLOBAL_STATS = [
   { value: '+10 000', label: 'personnes examinées en téléconsultation' },
@@ -303,13 +340,13 @@ export const ARNAUD = {
     { outlet: 'La Tribune', title: 'La santé mobile qui vient au cœur de l’entreprise va être cruciale pour réussir le déconfinement', date: '2020' },
   ],
   timeline: [
-    { period: '1987 – 2001', role: 'Administrateur et trésorier adjoint', org: 'Genethon / AFM Téléthon' },
-    { period: '1998 – 2000', role: 'SVP Communications', org: 'Génopole' },
-    { period: '2000 – 2011', role: 'EVP Stratégie & Développement, PDG branche Entertainment', org: 'Lagardère' },
-    { period: '2011 – 2019', role: 'Partner & EVP, New Mobilities', org: 'Deloitte' },
-    { period: '2019 – 2020', role: 'SVP Mobilités mondiales', org: 'Renault Nissan' },
-    { period: '2020 – 2024', role: 'Président', org: 'Loxamed' },
     { period: '2024 – 2025', role: 'Président', org: 'Doxamed · Teledok' },
+    { period: '2020 – 2024', role: 'Président', org: 'Loxamed' },
+    { period: '2019 – 2020', role: 'SVP Mobilités mondiales', org: 'Renault Nissan' },
+    { period: '2011 – 2019', role: 'Partner & EVP, New Mobilities', org: 'Deloitte' },
+    { period: '2000 – 2011', role: 'EVP Stratégie & Développement, PDG branche Entertainment', org: 'Lagardère' },
+    { period: '1998 – 2000', role: 'SVP Communications', org: 'Génopole' },
+    { period: '1987 – 2001', role: 'Administrateur et trésorier adjoint', org: 'Genethon / AFM Téléthon' },
   ],
 }
 
@@ -322,13 +359,46 @@ export const ADP_QUOTE = {
 }
 
 export const COMITE_STRATEGIQUE = [
-  { name: 'Arnaud Molinié', role: 'Fondateur et président de Doxamed et Capitello Group' },
-  { name: 'Matthieu Guillotin', role: 'Directeur général de Doxamed' },
-  { name: 'Dr Philippe Douste-Blazy', role: 'Ancien Ministre des Affaires étrangères, des Solidarités et de la Santé, de la Culture' },
-  { name: 'Jean-Louis Ségura', role: 'Fondateur et ancien directeur général de l’Agefiph, ancien DG de l’ARH de Bourgogne' },
-  { name: 'Philippe Buros', role: 'Directeur général de Capitello Move, ancien SVP Commerce Europe — Renault Group' },
-  { name: 'Philippe Buhl', role: 'Ancien directeur général du groupe Cerba Healthcare' },
-  { name: 'Joël Stumm', role: 'Ancien directeur général chez Almaviva et chez Clininvest' },
+  {
+    name: 'Arnaud Molinié',
+    role: 'Fondateur et président de Doxamed et Capitello Group',
+    photo: '/photos/arnaud2.png',
+    linkedin: 'https://www.linkedin.com/in/arnaud-molini%C3%A9-loxamed/',
+  },
+  {
+    name: 'Matthieu Guillotin',
+    role: 'Directeur général de Doxamed',
+    photo: '/photos/comite/guillotin.png',
+    linkedin: 'https://www.linkedin.com/in/matthieu-guillotin-5755924/',
+  },
+  {
+    name: 'Dr Philippe Douste-Blazy',
+    role: 'Ancien Ministre des Affaires étrangères, des Solidarités et de la Santé, de la Culture',
+    photo: '/photos/comite/douste.png',
+    linkedin: 'https://www.linkedin.com/in/philippedousteblazy/',
+  },
+  {
+    name: 'Jean-Louis Ségura',
+    role: 'Fondateur et ancien directeur général de l’Agefiph, ancien DG de l’ARH de Bourgogne',
+    photo: '/photos/comite/segura.png',
+  },
+  {
+    name: 'Philippe Buros',
+    role: 'Directeur général de Capitello Move, ancien SVP Commerce Europe — Renault Group',
+    photo: '/photos/comite/buros.png',
+    linkedin: 'https://www.linkedin.com/in/philippe-buros-047145107/',
+  },
+  {
+    name: 'Philippe Buhl',
+    role: 'Ancien directeur général du groupe Cerba Healthcare',
+    photo: '/photos/comite/buhl.png',
+    linkedin: 'https://www.linkedin.com/in/philippe-buhl-2a1bb24/',
+  },
+  {
+    name: 'Joël Stumm',
+    role: 'Ancien directeur général chez Almaviva et chez Clininvest',
+    linkedin: 'https://www.linkedin.com/in/joel-stumm-a5698327b/',
+  },
   { name: 'Marine Molinié', role: 'Capitello Group holding' },
 ]
 
@@ -337,14 +407,57 @@ export const CONSEIL_SCIENTIFIQUE = [
     name: 'Jean-Louis Ségura',
     role: 'Président du conseil scientifique',
     detail: "Fondateur et ancien DG de l’Agefiph, ancien DG de l’ARH de Bourgogne, directeur de projet de l’Oncopole de Toulouse, inspecteur général honoraire.",
+    photo: '/photos/comite/segura.png',
   },
-  { name: 'Dr François Dolveck', role: 'Médecin urgentiste', detail: 'Directeur du SAMU de Seine-et-Marne, chef de service SAMU77 / urgences / SMUR — groupement hospitalier Sud Ile-de-France.' },
-  { name: 'Pr Claude Jeandel', role: 'PU médecine interne & gériatrie', detail: 'Ancien président du CNP de gériatrie, auteur de rapports de référence sur le vieillissement.' },
-  { name: 'Dr Catherine Fac', role: 'Ancienne praticienne hospitalière', detail: 'Responsable de l’unité sanitaire du Centre pénitentiaire de Fresnes.' },
-  { name: 'Olivier Boyer', role: 'Haut fonctionnaire', detail: 'Directeur général du CHU Orléans.' },
-  { name: 'Pr Pierre Fumoleau', role: 'PU oncologie médicale', detail: 'Ancien DG de l’Institut Curie, directeur scientifique du Cancéropôle Grand Est.' },
-  { name: 'Dr Stéphane Illouz', role: 'Urgentiste, médecin généraliste', detail: 'Coordinateur MSP — co-fondateur de Teledok.' },
-  { name: 'Dr François Teboul', role: 'Urgentiste, médecin généraliste', detail: 'Coordinateur MSP et bureau CPTS, président du groupe Téléconsultation de l’Académie Francophone de Télémédecine — co-fondateur de Teledok.' },
+  {
+    name: 'Dr François Dolveck',
+    role: 'Médecin urgentiste',
+    detail: 'Directeur du SAMU de Seine-et-Marne, chef de service SAMU77 / urgences / SMUR — groupement hospitalier Sud Ile-de-France.',
+    photo: '/photos/comite/dolveck.png',
+    linkedin: 'https://www.linkedin.com/in/fran%C3%A7ois-dolveck-925585171/',
+  },
+  {
+    name: 'Pr Claude Jeandel',
+    role: 'PU médecine interne & gériatrie',
+    detail: 'Ancien président du CNP de gériatrie, auteur de rapports de référence sur le vieillissement.',
+    photo: '/photos/comite/jeandel.png',
+    linkedin: 'https://www.linkedin.com/in/claude-jeandel-813b1862/',
+  },
+  {
+    name: 'Dr Catherine Fac',
+    role: 'Ancienne praticienne hospitalière',
+    detail: 'Responsable de l’unité sanitaire du Centre pénitentiaire de Fresnes.',
+    photo: '/photos/comite/fac.png',
+    linkedin: 'https://www.linkedin.com/in/catherine-fac-7082016a/',
+  },
+  {
+    name: 'Olivier Boyer',
+    role: 'Haut fonctionnaire',
+    detail: 'Directeur général du CHU Orléans.',
+    photo: '/photos/comite/boyer.png',
+    linkedin: 'https://www.linkedin.com/in/olivier-boyer-346ab8175/',
+  },
+  {
+    name: 'Pr Pierre Fumoleau',
+    role: 'PU oncologie médicale',
+    detail: 'Ancien DG de l’Institut Curie, directeur scientifique du Cancéropôle Grand Est.',
+    photo: '/photos/comite/fumoleau.png',
+    linkedin: 'https://www.linkedin.com/in/pierre-fumoleau-31976441/',
+  },
+  {
+    name: 'Dr Stéphane Illouz',
+    role: 'Urgentiste, médecin généraliste',
+    detail: 'Coordinateur MSP — co-fondateur de Teledok.',
+    photo: '/photos/comite/illouz.png',
+    linkedin: 'https://www.linkedin.com/in/stephane-illouz-0b3413270/',
+  },
+  {
+    name: 'Dr François Teboul',
+    role: 'Urgentiste, médecin généraliste',
+    detail: 'Coordinateur MSP et bureau CPTS, président du groupe Téléconsultation de l’Académie Francophone de Télémédecine — co-fondateur de Teledok.',
+    photo: '/photos/comite/teboul.png',
+    linkedin: 'https://www.linkedin.com/in/francois-teboul-b03a9599/',
+  },
 ]
 
 export const TELEDOK = {

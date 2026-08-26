@@ -112,6 +112,12 @@ export function ClientRefCard({ c }: { c: ClientRef }) {
         </div>
         <span className="text-xs text-slate-2 whitespace-nowrap">{c.since}</span>
       </div>
+      {c.logo && (
+        <div className="flex justify-center mb-5">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={c.logo} alt={c.name} className="h-10 w-auto max-w-[180px] object-contain" />
+        </div>
+      )}
       <p className="text-sm text-slate leading-relaxed mb-6">{c.detail}</p>
       <div className="flex items-baseline gap-2 pt-4 border-t border-mist">
         <span className="font-mono-num text-2xl font-semibold text-ink-800">{c.metric.value}</span>
@@ -172,7 +178,21 @@ export function NewsCard({ n }: { n: NewsItem }) {
   )
 }
 
-export function PersonCard({ name, role, detail }: { name: string; role: string; detail?: string }) {
+export function PersonCard({
+  name,
+  role,
+  detail,
+  photo,
+  linkedin,
+}: {
+  name: string
+  role: string
+  detail?: string
+  /** Optional real photo (e.g. "/photos/comite/guillotin.png") — falls back to initials monogram. */
+  photo?: string
+  /** Optional LinkedIn profile URL — renders a small badge next to the name. */
+  linkedin?: string
+}) {
   const initials = name
     .replace(/^(Dr|Pr)\.?\s/, '')
     .split(' ')
@@ -182,26 +202,54 @@ export function PersonCard({ name, role, detail }: { name: string; role: string;
 
   return (
     <div className="rounded-2xl border border-mist bg-white p-6">
-      <div className="w-12 h-12 rounded-full bg-ink-800 text-white flex items-center justify-center font-semibold text-sm mb-4">
-        {initials}
+      {photo ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={photo} alt={name} className="w-12 h-12 rounded-full object-cover mb-4" />
+      ) : (
+        <div className="w-12 h-12 rounded-full bg-ink-800 text-white flex items-center justify-center font-semibold text-sm mb-4">
+          {initials}
+        </div>
+      )}
+      <div className="flex items-center gap-2">
+        <h3 className="text-[0.98rem] font-semibold text-ink-800 leading-snug">{name}</h3>
+        {linkedin && (
+          <a
+            href={linkedin}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`Profil LinkedIn de ${name}`}
+            className="w-6 h-6 rounded-full border border-mist flex items-center justify-center text-slate-2 hover:text-electric-2 hover:border-electric transition-colors shrink-0"
+          >
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.6c0-1.34-.02-3.07-1.87-3.07-1.87 0-2.15 1.46-2.15 2.97V21h-4V9Z"/></svg>
+          </a>
+        )}
       </div>
-      <h3 className="text-[0.98rem] font-semibold text-ink-800 leading-snug">{name}</h3>
       <p className="text-sm text-electric-2 font-medium mt-1">{role}</p>
       {detail && <p className="text-sm text-slate leading-relaxed mt-2.5">{detail}</p>}
     </div>
   )
 }
 
-export function ClientLogoStrip({ names }: { names: string[] }) {
+export function ClientLogoStrip({ names, logos = {} }: { names: string[]; logos?: Partial<Record<string, string>> }) {
   const loop = [...names, ...names]
   return (
     <div className="relative overflow-hidden py-2 [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-      <div className="flex gap-10 sm:gap-14 w-max animate-marquee">
-        {loop.map((n, i) => (
-          <span key={`${n}-${i}`} className="text-[1.05rem] font-semibold tracking-tight text-ink-800/35 whitespace-nowrap shrink-0">
-            {n}
-          </span>
-        ))}
+      <div className="flex items-center gap-10 sm:gap-14 w-max animate-marquee">
+        {loop.map((n, i) =>
+          logos[n] ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              key={`${n}-${i}`}
+              src={logos[n]}
+              alt={n}
+              className="h-6 sm:h-7 w-auto max-w-[130px] object-contain shrink-0 opacity-45 grayscale"
+            />
+          ) : (
+            <span key={`${n}-${i}`} className="text-[1.05rem] font-semibold tracking-tight text-ink-800/35 whitespace-nowrap shrink-0">
+              {n}
+            </span>
+          )
+        )}
       </div>
     </div>
   )

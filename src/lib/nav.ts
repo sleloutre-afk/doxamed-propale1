@@ -29,7 +29,7 @@ export const NAV: NavItem[] = [
     children: [
       { label: 'Genèse & mission', href: '/a-propos', blurb: 'Depuis 2020, une vision née en pleine crise sanitaire' },
       { label: 'Gouvernance & équipe', href: '/a-propos/gouvernance', blurb: 'Arnaud Molinié, comité stratégique, conseil scientifique' },
-      { label: 'Savoir-faire', href: '/a-propos/savoir-faire', blurb: 'Teledok, expertise médicale, livre blanc' },
+      { label: 'Labels & prix', href: '/a-propos/labels-prix', blurb: 'Certifications RSE, prix et distinctions' },
       { label: 'Références', href: '/references', blurb: 'Chiffres clés, clients, études de cas' },
     ],
   },
@@ -43,7 +43,7 @@ export const FOOTER_LINKS = {
   entreprise: [
     { label: 'Genèse & mission', href: '/a-propos' },
     { label: 'Gouvernance & équipe', href: '/a-propos/gouvernance' },
-    { label: 'Savoir-faire', href: '/a-propos/savoir-faire' },
+    { label: 'Labels & prix', href: '/a-propos/labels-prix' },
     { label: 'Références', href: '/references' },
     { label: 'Actualités', href: '/actualites' },
     { label: 'Carrières', href: '/carrieres' },
