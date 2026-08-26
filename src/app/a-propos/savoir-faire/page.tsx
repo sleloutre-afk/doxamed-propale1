@@ -27,6 +27,8 @@ export default function SavoirFairePage() {
           <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-12 items-start">
             <div>
               <Kicker>Partenaire stratégique</Kicker>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/brand/teledok.svg" alt="TeleDok" className="h-7 w-auto mb-5" />
               <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-ink-800 mb-4 text-balance">
                 Doxamed travaille avec Teledok, plateforme nationale de médecins aguerris.
               </h2>

@@ -15,7 +15,7 @@ export default function GouvernancePage() {
     <>
       <PageHero
         kicker="À propos — Gouvernance & équipe"
-        title="Une gouvernance qui conjugue expérience business et légitimité médicale."
+        title="Une gouvernance qui conjugue excellence médicale et vision stratégique des entreprises."
         crumb={[{ label: 'À propos', href: '/a-propos' }, { label: 'Gouvernance & équipe', href: '/a-propos/gouvernance' }]}
       />
 

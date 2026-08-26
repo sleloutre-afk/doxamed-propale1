@@ -350,7 +350,7 @@ export const CONSEIL_SCIENTIFIQUE = [
 export const TELEDOK = {
   founded: '2018',
   founders: 'Dr François Teboul et Dr Stéphane Illouz',
-  acquired: 'Acquis par Capitello Group fin 2025',
+  acquired: 'Filiale à 100 % de Capitello Group, la maison-mère de Doxamed, depuis fin 2025',
   pitch:
     "Précurseur des plateformes de médecins dédiées à la téléconsultation, Teledok met à disposition ses praticiens auprès des opérateurs de télémédecine.",
   stat: { value: '+100', label: 'professionnels de santé engagés' },

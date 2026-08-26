@@ -18,6 +18,7 @@ export default function AProposPage() {
         title="Une vision née en pleine crise sanitaire, devenue un modèle de santé de proximité."
         lead="Fondée en 2020 sous le nom de Loxamed, Doxamed développe des solutions de santé mobiles et connectées, intervenant sur trois axes stratégiques."
         crumb={[{ label: 'À propos', href: '/a-propos' }]}
+        image="/photos/loxamed.png"
       />
 
       <Section className="py-20 sm:py-24">

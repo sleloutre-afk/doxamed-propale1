@@ -32,7 +32,7 @@ export default function ReferencesPage() {
       <Section className="py-16 sm:py-20">
         <Kicker>Études de cas</Kicker>
         <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 mb-10 max-w-2xl text-balance">
-          Sept déploiements, sept réussites.
+          Un engouement constaté à chaque déploiement.
         </h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {CLIENT_REFS.map((c) => (

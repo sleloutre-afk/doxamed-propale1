@@ -11,16 +11,26 @@ const PHASE_COLOR: Record<string, string> = {
 }
 
 export default function PatientJourney() {
-  const [active, setActive] = useState(1)
+  const [active, setActive] = useState(0)
 
   return (
     <div>
-      {/* Progress rail */}
+      {/* Progress rail — inset by half a grid column so it spans exactly
+          from the first dot's center to the last dot's center. */}
       <div className="relative mb-10 hidden md:block">
-        <div className="absolute top-4 left-0 right-0 h-px bg-mist" />
         <div
-          className="absolute top-4 left-0 h-px bg-electric transition-all duration-500"
-          style={{ width: `${(active / (PARCOURS_PATIENT.length - 1)) * 100}%` }}
+          className="absolute top-4 h-px bg-mist"
+          style={{
+            left: `${50 / PARCOURS_PATIENT.length}%`,
+            right: `${50 / PARCOURS_PATIENT.length}%`,
+          }}
+        />
+        <div
+          className="absolute top-4 h-px bg-electric transition-all duration-500"
+          style={{
+            left: `${50 / PARCOURS_PATIENT.length}%`,
+            width: `${(active / (PARCOURS_PATIENT.length - 1)) * (100 - 100 / PARCOURS_PATIENT.length)}%`,
+          }}
         />
         <div className="relative grid" style={{ gridTemplateColumns: `repeat(${PARCOURS_PATIENT.length}, 1fr)` }}>
           {PARCOURS_PATIENT.map((s, i) => (
