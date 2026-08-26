@@ -37,6 +37,7 @@ export default function BPSPage() {
         title="Le bilan de prévention santé : un checkup 360° en 2h30."
         lead="Un dispositif déployable à grande échelle, conforme aux exigences médicales, qui explore 8 fonctions vitales pour chaque collaborateur — sur site, sans rupture d'activité."
         crumb={[{ label: 'Nos solutions', href: '/solutions' }, { label: 'Bilan de prévention santé', href: '/solutions/bilan-prevention-sante' }]}
+        video="/videos/bps.mp4"
       />
 
       <Section className="py-16 sm:py-20 -mt-8 sm:-mt-14 relative">

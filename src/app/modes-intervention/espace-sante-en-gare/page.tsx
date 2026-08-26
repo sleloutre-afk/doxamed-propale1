@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { PageHero, Section, Kicker, StatStrip, CTABanner } from '@/components/ui'
 import ContactCTAButton from '@/components/ContactCTAButton'
 import Icon from '@/components/Icons'
+import Picto from '@/components/pictos'
 import { PRESS_OUTLETS } from '@/lib/content'
 
 export const metadata: Metadata = {
@@ -47,7 +48,7 @@ export default function GarePage() {
           </div>
           <div className="rounded-2xl border border-mist bg-white p-7 sm:p-8">
             <div className="w-11 h-11 rounded-xl bg-electric-dim text-electric-2 flex items-center justify-center mb-5">
-              <Icon name="train" className="w-5 h-5" />
+              <Picto name="gare" className="w-5 h-5" />
             </div>
             <p className="text-sm text-slate leading-relaxed">
               Un dispositif déjà présent à Épinay-sur-Orge, ainsi que dans les gares de Marseille, Nice,

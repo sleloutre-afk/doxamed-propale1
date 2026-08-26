@@ -23,6 +23,7 @@ export function PageHero({
   crumb,
   image,
   imagePosition = 'center',
+  video,
 }: {
   kicker: string
   title: string
@@ -32,18 +33,34 @@ export function PageHero({
   image?: string
   /** CSS object-position for the background photo (default "center"). */
   imagePosition?: string
+  /** Optional background video (e.g. "/videos/bps.mp4") behind the hero — takes priority over `image`. */
+  video?: string
 }) {
   return (
     <section className="relative bg-ink-800 text-white overflow-hidden">
-      {image && (
+      {(video || image) && (
         <>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={image}
-            alt=""
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{ objectPosition: imagePosition }}
-          />
+          {video ? (
+            <video
+              className="absolute inset-0 w-full h-full object-cover"
+              style={{ objectPosition: imagePosition }}
+              autoPlay
+              muted
+              loop
+              playsInline
+              aria-hidden="true"
+            >
+              <source src={video} type="video/mp4" />
+            </video>
+          ) : (
+            /* eslint-disable-next-line @next/next/no-img-element */
+            <img
+              src={image}
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover"
+              style={{ objectPosition: imagePosition }}
+            />
+          )}
           <div
             className="absolute inset-0"
             style={{

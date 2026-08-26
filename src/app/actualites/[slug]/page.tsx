@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import { Section, Kicker, CTABanner } from '@/components/ui'
 import { NewsTypeBadge, NewsCard } from '@/components/Cards'
 import Icon from '@/components/Icons'
+import Picto from '@/components/pictos'
 import ContactCTAButton from '@/components/ContactCTAButton'
 import { NEWS } from '@/lib/content'
 
@@ -68,7 +69,7 @@ export default async function NewsDetailPage({ params }: { params: Promise<{ slu
             {item.type === 'livre-blanc' && (
               <div className="mt-10 rounded-2xl border border-mist bg-white p-7 flex items-center gap-5">
                 <div className="w-12 h-12 rounded-xl bg-signal/10 text-signal flex items-center justify-center shrink-0">
-                  <Icon name="file" className="w-6 h-6" />
+                  <Picto name="whitepaper" className="w-6 h-6" />
                 </div>
                 <div className="flex-1">
                   <p className="font-semibold text-ink-800">Télécharger le livre blanc</p>

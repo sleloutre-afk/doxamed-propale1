@@ -8,8 +8,18 @@ import PictoRespiratoire from './PictoRespiratoire'
 import PictoMetabolique from './PictoMetabolique'
 import PictoDermato from './PictoDermato'
 import PictoPostural from './PictoPostural'
+import PictoInSitu from './PictoInSitu'
+import PictoBox from './PictoBox'
+import PictoGare from './PictoGare'
+import PictoMobilcare from './PictoMobilcare'
+import PictoMedias from './PictoMedias'
+import PictoSocial from './PictoSocial'
+import PictoWhitepaper from './PictoWhitepaper'
+import PictoArticles from './PictoArticles'
 
-/** Registry keyed by the same `key` used in BPS_EXAMS (src/lib/content.ts). */
+/** Registry keyed by the same `key` used in BPS_EXAMS (src/lib/content.ts),
+ *  the four modes d'intervention slugs, and the four actualités/media types
+ *  (src/lib/content.ts NewsItem['type']). */
 export const PICTOS = {
   'sante-mentale': PictoSanteMentale,
   visuel: PictoVisuel,
@@ -21,6 +31,14 @@ export const PICTOS = {
   metabolique: PictoMetabolique,
   dermato: PictoDermato,
   postural: PictoPostural,
+  'in-situ': PictoInSitu,
+  box: PictoBox,
+  gare: PictoGare,
+  mobilcare: PictoMobilcare,
+  medias: PictoMedias,
+  social: PictoSocial,
+  whitepaper: PictoWhitepaper,
+  articles: PictoArticles,
 } as const
 
 export type PictoKey = keyof typeof PICTOS

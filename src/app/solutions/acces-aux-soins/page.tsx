@@ -41,6 +41,7 @@ export default function AccesAuxSoinsPage() {
         title="Des espaces de santé déployables partout, pour tous."
         lead="Un socle évolutif d'accès aux soins, adaptable au projet médical du territoire, en lien avec les ARS, URPS, CPTS et MSP."
         crumb={[{ label: 'Nos solutions', href: '/solutions' }, { label: 'Accès aux soins', href: '/solutions/acces-aux-soins' }]}
+        video="/videos/acces.mp4"
       />
 
       <Section className="py-16 sm:py-20 -mt-8 sm:-mt-14 relative">

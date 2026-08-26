@@ -23,6 +23,7 @@ export default function ConseilIngenieriePage() {
         title="Conseil & ingénierie santé, sur mesure."
         lead="Doxamed accompagne la conception et le déploiement de dispositifs et d'événements santé sur mesure, du cadrage médical au pilotage terrain."
         crumb={[{ label: 'Nos solutions', href: '/solutions' }, { label: 'Conseil & ingénierie santé', href: '/solutions/conseil-ingenierie' }]}
+        video="/videos/conseil.mp4"
       />
 
       <Section className="py-20 sm:py-28">

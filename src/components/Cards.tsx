@@ -51,34 +51,52 @@ export function MetierCard({ m }: { m: Metier }) {
   )
 }
 
-const MODE_ICONS: Record<string, string> = {
-  'in-situ': 'building',
-  box: 'cabin',
-  mobilcare: 'van',
-  'espace-sante-en-gare': 'train',
+const MODE_PICTOS: Record<string, 'in-situ' | 'box' | 'mobilcare' | 'gare'> = {
+  'in-situ': 'in-situ',
+  box: 'box',
+  mobilcare: 'mobilcare',
+  'espace-sante-en-gare': 'gare',
+}
+
+const MODE_IMAGES: Record<string, string> = {
+  'in-situ': '/photos/in-situ-mini.png',
+  box: '/photos/box-mini.png',
+  mobilcare: '/photos/mobilcar-mini.png',
+  'espace-sante-en-gare': '/photos/gare-mini.png',
 }
 
 export function ModeCard({ m }: { m: Mode }) {
   return (
     <Link
       href={`/modes-intervention/${m.slug}`}
-      className="lift group flex flex-col rounded-2xl border border-mist bg-white p-7 h-full"
+      className="lift group relative flex flex-col rounded-2xl border border-mist bg-white p-7 h-full overflow-hidden"
     >
-      <div className="w-11 h-11 rounded-xl bg-electric-dim text-electric-2 flex items-center justify-center mb-6">
-        <Icon name={MODE_ICONS[m.slug] as never} className="w-5 h-5" />
-      </div>
-      <p className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-electric-2 mb-1.5">{m.short}</p>
-      <h3 className="text-lg font-semibold tracking-tight text-ink-800 mb-2.5">{m.name}</h3>
-      <p className="text-sm text-slate leading-relaxed mb-5">{m.pitch}</p>
-      {m.stat && (
-        <div className="mt-auto pt-4 border-t border-mist flex items-baseline gap-2">
-          <span className="font-mono-num text-xl font-semibold text-ink-800">{m.stat.value}</span>
-          <span className="text-xs text-slate">{m.stat.label}</span>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={MODE_IMAGES[m.slug]}
+        alt=""
+        className="absolute inset-0 w-full h-full object-cover object-top opacity-0 group-hover:opacity-[0.12] transition-opacity duration-500 pointer-events-none"
+      />
+      <div className="relative z-10 flex flex-col h-full">
+        <div className="relative w-28 h-28 rounded-2xl overflow-hidden mb-6">
+          <div className="absolute inset-0 bg-white" />
+          <div className="absolute inset-0 bg-electric-dim text-electric-2 flex items-center justify-center">
+            <Picto name={MODE_PICTOS[m.slug]} className="w-12 h-12" />
+          </div>
         </div>
-      )}
-      <div className="mt-4 flex items-center gap-2 text-sm font-semibold text-electric-2">
-        <span>En savoir plus</span>
-        <Icon name="arrowRight" className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+        <p className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-electric-2 mb-1.5">{m.short}</p>
+        <h3 className="text-lg font-semibold tracking-tight text-ink-800 mb-2.5">{m.name}</h3>
+        <p className="text-sm text-slate leading-relaxed mb-5">{m.pitch}</p>
+        {m.stat && (
+          <div className="mt-auto pt-4 border-t border-mist flex items-baseline gap-2">
+            <span className="font-mono-num text-xl font-semibold text-ink-800">{m.stat.value}</span>
+            <span className="text-xs text-slate">{m.stat.label}</span>
+          </div>
+        )}
+        <div className="mt-4 flex items-center gap-2 text-sm font-semibold text-electric-2">
+          <span>En savoir plus</span>
+          <Icon name="arrowRight" className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+        </div>
       </div>
     </Link>
   )
@@ -125,15 +143,19 @@ export function NewsTypeBadge({ type }: { type: NewsItem['type'] }) {
   )
 }
 
+const NEWS_TYPE_PICTO: Record<NewsItem['type'], 'whitepaper' | 'medias' | 'social' | 'articles'> = {
+  'livre-blanc': 'whitepaper',
+  presse: 'medias',
+  reseaux: 'social',
+  article: 'articles',
+}
+
 export function NewsCard({ n }: { n: NewsItem }) {
   return (
     <Link href={`/actualites/${n.slug}`} className="lift group flex flex-col rounded-2xl border border-mist bg-white overflow-hidden h-full">
       <div className="aspect-[16/10] bg-paper-2 flex items-center justify-center relative overflow-hidden">
         <div className="absolute inset-0 grid-backdrop-light opacity-60" />
-        <Icon
-          name={n.type === 'livre-blanc' ? 'file' : n.type === 'presse' ? 'report' : n.type === 'reseaux' ? 'chat' : 'spark'}
-          className="w-9 h-9 text-electric-2/50 relative"
-        />
+        <Picto name={NEWS_TYPE_PICTO[n.type]} className="w-24 h-24 text-electric-2/50 relative" />
       </div>
       <div className="p-5 sm:p-6 flex flex-col flex-1">
         <div className="flex items-center gap-2 mb-3">

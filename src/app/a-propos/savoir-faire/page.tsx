@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { PageHero, Section, Kicker, CTABanner } from '@/components/ui'
 import Icon from '@/components/Icons'
+import Picto from '@/components/pictos'
 import { TELEDOK, LABELS, NEWS } from '@/lib/content'
 
 export const metadata: Metadata = {
@@ -56,7 +57,7 @@ export default function SavoirFairePage() {
           <Section>
             <div className="rounded-2xl border border-mist bg-white p-8 sm:p-10 grid sm:grid-cols-[auto_1fr_auto] items-center gap-6">
               <div className="w-14 h-14 rounded-xl bg-signal/10 text-signal flex items-center justify-center shrink-0">
-                <Icon name="file" className="w-6 h-6" />
+                <Picto name="whitepaper" className="w-6 h-6" />
               </div>
               <div>
                 <p className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-signal mb-1.5">Livre blanc</p>

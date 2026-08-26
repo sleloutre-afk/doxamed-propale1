@@ -29,6 +29,7 @@ export default function DepistagePage() {
         title="Des campagnes de dépistage et de vaccination ciblées."
         lead="Identification et prise en charge de risques spécifiques pour des populations identifiées, avec un dispositif clé en main sur site."
         crumb={[{ label: 'Nos solutions', href: '/solutions' }, { label: 'Dépistage & vaccination', href: '/solutions/depistage-vaccination' }]}
+        video="/videos/vaccin.mp4"
       />
 
       <Section className="py-16 sm:py-20 -mt-8 sm:-mt-14 relative">

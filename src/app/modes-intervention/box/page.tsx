@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { PageHero, Section, Kicker, CTABanner } from '@/components/ui'
 import ContactCTAButton from '@/components/ContactCTAButton'
-import Icon from '@/components/Icons'
+import Picto from '@/components/pictos'
 
 export const metadata: Metadata = {
   title: 'Box — cabine médicale autonome et connectée',
@@ -36,7 +36,7 @@ export default function BoxPage() {
           </div>
           <div className="rounded-2xl border border-mist bg-white p-7 sm:p-8">
             <div className="w-11 h-11 rounded-xl bg-electric-dim text-electric-2 flex items-center justify-center mb-5">
-              <Icon name="cabin" className="w-5 h-5" />
+              <Picto name="box" className="w-5 h-5" />
             </div>
             <p className="text-sm text-slate leading-relaxed">
               Idéale pour un dépistage ponctuel à fort volume — sur le modèle des box de dépistage déployées lors

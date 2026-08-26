@@ -39,6 +39,7 @@ export default function RPSPage() {
         title="Prévenir, écouter, intervenir : la santé mentale au cœur du travail."
         lead="Un dispositif en quatre modules d'évaluation, d'accompagnement et de prévention des risques psychosociaux, pensé pour les entreprises."
         crumb={[{ label: 'Nos solutions', href: '/solutions' }, { label: 'Risques psychosociaux', href: '/solutions/risques-psychosociaux' }]}
+        video="/videos/rps.mp4"
       />
 
       <Section className="py-16 sm:py-20 -mt-8 sm:-mt-14 relative">
