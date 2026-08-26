@@ -16,7 +16,7 @@ export default function GarePage() {
     <>
       <PageHero
         kicker="Mode d'intervention — exclusivité SNCF"
-        title="Espace de santé en gare : soigner au cœur des déserts médicaux."
+        title={<>Espace de santé en gare : soigner au cœur des <span className="text-electric-light">déserts médicaux.</span></>}
         lead="Fin 2023, Doxamed remporte l'appel d'offres de SNCF Gares & Connexions pour déployer des espaces de santé permanents en gare."
         crumb={[{ label: "Nos modes d'intervention", href: '/modes-intervention' }, { label: 'Espace de santé en gare', href: '/modes-intervention/espace-sante-en-gare' }]}
         image="/photos/gare.png"

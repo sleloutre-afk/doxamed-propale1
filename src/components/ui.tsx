@@ -26,7 +26,8 @@ export function PageHero({
   video,
 }: {
   kicker: string
-  title: string
+  /** Plain string, or JSX with a highlighted word via <span className="text-electric-light">…</span>. */
+  title: React.ReactNode
   lead?: string
   crumb?: { label: string; href: string }[]
   /** Optional background photo (e.g. "/photos/mobilcar.png") behind the hero. */

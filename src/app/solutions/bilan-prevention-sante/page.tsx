@@ -34,7 +34,7 @@ export default function BPSPage() {
     <>
       <PageHero
         kicker="Solution n°1 — BPS"
-        title="Le bilan de prévention santé : un checkup 360° en 2h30."
+        title={<>Le bilan de prévention santé : <span className="text-electric-light">un checkup 360° en 2h30.</span></>}
         lead="Un dispositif déployable à grande échelle, conforme aux exigences médicales, qui explore 8 fonctions vitales pour chaque collaborateur — sur site, sans rupture d'activité."
         crumb={[{ label: 'Nos solutions', href: '/solutions' }, { label: 'Bilan de prévention santé', href: '/solutions/bilan-prevention-sante' }]}
         video="/videos/bps.mp4"

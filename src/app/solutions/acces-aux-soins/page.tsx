@@ -38,7 +38,7 @@ export default function AccesAuxSoinsPage() {
     <>
       <PageHero
         kicker="Solution n°4 — Accès aux soins"
-        title="Des espaces de santé déployables partout, pour tous."
+        title={<>Des espaces de santé déployables <span className="text-electric-light">partout, pour tous.</span></>}
         lead="Un socle évolutif d'accès aux soins, adaptable au projet médical du territoire, en lien avec les ARS, URPS, CPTS et MSP."
         crumb={[{ label: 'Nos solutions', href: '/solutions' }, { label: 'Accès aux soins', href: '/solutions/acces-aux-soins' }]}
         video="/videos/acces.mp4"

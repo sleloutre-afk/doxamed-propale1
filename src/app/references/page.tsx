@@ -14,7 +14,7 @@ export default function ReferencesPage() {
     <>
       <PageHero
         kicker="Références"
-        title="Des résultats mesurables, auprès de grands groupes et d'institutions."
+        title={<>Des résultats <span className="text-electric-light">mesurables,</span> auprès de grands groupes et d&rsquo;institutions.</>}
         crumb={[{ label: 'Références', href: '/references' }]}
       />
 

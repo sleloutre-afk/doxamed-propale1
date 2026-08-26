@@ -17,7 +17,7 @@ export default function SavoirFairePage() {
     <>
       <PageHero
         kicker="À propos — Savoir-faire"
-        title="Une expertise médicale assurée par des professionnels aguerris."
+        title={<>Une expertise médicale assurée par des <span className="text-electric-light">professionnels aguerris.</span></>}
         crumb={[{ label: 'À propos', href: '/a-propos' }, { label: 'Savoir-faire', href: '/a-propos/savoir-faire' }]}
       />
 

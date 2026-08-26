@@ -20,7 +20,7 @@ export default function ConseilIngenieriePage() {
     <>
       <PageHero
         kicker="Solution n°5 — Conseil"
-        title="Conseil & ingénierie santé, sur mesure."
+        title={<>Conseil & ingénierie santé, <span className="text-electric-light">sur mesure.</span></>}
         lead="Doxamed accompagne la conception et le déploiement de dispositifs et d'événements santé sur mesure, du cadrage médical au pilotage terrain."
         crumb={[{ label: 'Nos solutions', href: '/solutions' }, { label: 'Conseil & ingénierie santé', href: '/solutions/conseil-ingenierie' }]}
         video="/videos/conseil.mp4"

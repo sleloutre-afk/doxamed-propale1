@@ -36,7 +36,7 @@ export default function RPSPage() {
     <>
       <PageHero
         kicker="Solution n°2 — RPS"
-        title="Prévenir, écouter, intervenir : la santé mentale au cœur du travail."
+        title={<>Prévenir, écouter, intervenir : <span className="text-electric-light">la santé mentale</span> au cœur du travail.</>}
         lead="Un dispositif en quatre modules d'évaluation, d'accompagnement et de prévention des risques psychosociaux, pensé pour les entreprises."
         crumb={[{ label: 'Nos solutions', href: '/solutions' }, { label: 'Risques psychosociaux', href: '/solutions/risques-psychosociaux' }]}
         video="/videos/rps.mp4"

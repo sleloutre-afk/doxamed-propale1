@@ -13,7 +13,7 @@ export default function BoxPage() {
     <>
       <PageHero
         kicker="Mode d'intervention"
-        title="Box : une cabine médicale autonome et connectée."
+        title={<>Box : une cabine médicale <span className="text-electric-light">autonome et connectée.</span></>}
         lead="Compacte et installable en quelques heures, la Box embarque les dispositifs connectés nécessaires à un dépistage ou une téléconsultation assistée."
         crumb={[{ label: "Nos modes d'intervention", href: '/modes-intervention' }, { label: 'Box', href: '/modes-intervention/box' }]}
         image="/photos/box.png"
