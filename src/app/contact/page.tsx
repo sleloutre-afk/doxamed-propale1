@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { PageHero, Section, Kicker } from '@/components/ui'
 import ContactPageForm from '@/components/ContactPageForm'
 import Icon from '@/components/Icons'
+import Picto from '@/components/pictos'
 
 export const metadata: Metadata = {
   title: 'Contact',
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 const TRUST = [
   { icon: 'shield', label: 'Conforme RGPD & secret médical' },
   { icon: 'calendar', label: 'Retour sous 24h ouvrées' },
-  { icon: 'doctor', label: 'Suivi par un expert Doxamed' },
+  { picto: 'teleconsultation', label: 'Suivi par un expert Doxamed' },
   { icon: 'spark', label: '98% de satisfaction usagers' },
 ] as const
 
@@ -44,7 +45,7 @@ export default function ContactPage() {
                 {TRUST.map((t) => (
                   <li key={t.label} className="flex items-center gap-3">
                     <span className="w-8 h-8 rounded-lg bg-electric-dim text-electric-2 flex items-center justify-center shrink-0">
-                      <Icon name={t.icon} className="w-4 h-4" />
+                      {'picto' in t ? <Picto name={t.picto} className="w-4 h-4" /> : <Icon name={t.icon} className="w-4 h-4" />}
                     </span>
                     <span className="text-sm text-slate">{t.label}</span>
                   </li>

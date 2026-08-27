@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { PageHero, Section, Kicker, StatStrip, CTABanner } from '@/components/ui'
 import ContactCTAButton from '@/components/ContactCTAButton'
 import Icon from '@/components/Icons'
+import Picto from '@/components/pictos'
 import { MODES } from '@/lib/content'
 
 export const metadata: Metadata = {
@@ -12,12 +13,12 @@ export const metadata: Metadata = {
 
 const SERVICES = [
   {
-    icon: 'doctor',
+    picto: 'teleconsultation',
     name: 'Télémédecine',
     detail: 'Téléconsultation et téléexpertise avec des médecins généralistes et spécialistes.',
   },
   {
-    icon: 'nurse',
+    picto: 'infirmiere',
     name: 'Soins infirmiers',
     detail: 'Prises de sang, injections, pansements, perfusions et suivi préventif, sur rendez-vous.',
   },
@@ -63,7 +64,7 @@ export default function AccesAuxSoinsPage() {
           {SERVICES.map((s) => (
             <div key={s.name} className="rounded-2xl border border-mist bg-white p-7">
               <div className="w-11 h-11 rounded-xl bg-electric-dim text-electric-2 flex items-center justify-center mb-6">
-                <Icon name={s.icon} className="w-5 h-5" />
+                {'picto' in s ? <Picto name={s.picto} className="w-5 h-5" /> : <Icon name={s.icon} className="w-5 h-5" />}
               </div>
               <h3 className="text-lg font-semibold text-ink-800 mb-2.5">{s.name}</h3>
               <p className="text-sm text-slate leading-relaxed">{s.detail}</p>
